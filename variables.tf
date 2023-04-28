@@ -62,6 +62,9 @@ variable "helm_remote_proxy" {
   default = {
     awx = {
       url = "https://ansible.github.io/awx-operator/"
+    },
+    dex = {
+      url = "https://charts.dexidp.io"
     }
   }
 }
