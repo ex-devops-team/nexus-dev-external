@@ -33,6 +33,10 @@ variable "docker_remote_proxy" {
     gcr-io = {
       index = "REGISTRY"
       url   = "https://gcr.io"
+    },
+    yandex = {
+      index = "REGISTRY"
+      url   = "https://cr.yandex"
     }
   }
 }
