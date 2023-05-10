@@ -69,6 +69,12 @@ variable "helm_remote_proxy" {
     },
     dex = {
       url = "https://charts.dexidp.io"
+    },
+    prometheus = {
+      url = "https://prometheus-community.github.io/helm-charts"
+    },
+    grafana = {
+      url = "https://grafana.github.io/helm-charts"
     }
   }
 }
