@@ -58,7 +58,10 @@ variable "mvn_remote_proxy" {
       url = "https://repo.spring.io/ui/native/libs-milestone"
     },
     jitpack = {
-        url = "https://jitpack.io"
+      url = "https://jitpack.io"
+    }
+    spring-release = {
+      url = "https://repo.spring.io/ui/native/libs-release"
     }
   }
 }
