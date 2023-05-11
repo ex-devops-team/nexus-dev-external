@@ -16,8 +16,8 @@ resource "nexus_repository_npm_proxy" "npm_proxy" {
 
   proxy {
     remote_url       = each.value.url
-    content_max_age  = 1440
-    metadata_max_age = -1
+    content_max_age  = -1
+    metadata_max_age = 1440
   }
 
   negative_cache {
