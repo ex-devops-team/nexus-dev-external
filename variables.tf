@@ -37,6 +37,10 @@ variable "docker_remote_proxy" {
     yandex = {
       index = "REGISTRY"
       url   = "https://cr.yandex"
+    },
+    deckhouse = {
+      index = "REGISTRY"
+      url   = "https://registry.deckhouse.io/"
     }
   }
 }
