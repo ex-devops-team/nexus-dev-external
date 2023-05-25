@@ -109,6 +109,9 @@ variable "npm_remote_proxy" {
     yarn = {
       url = "https://registry.yarnpkg.com"
     }
+    sharp-libvips = {
+      url = "https://github.com/lovell/sharp-libvips/releases/download"
+    }
   }
 }
 
