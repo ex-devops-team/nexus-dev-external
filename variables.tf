@@ -109,9 +109,6 @@ variable "npm_remote_proxy" {
     yarn = {
       url = "https://registry.yarnpkg.com"
     }
-    sharp-libvips = {
-      url = "https://github.com/lovell/sharp-libvips/releases/download"
-    }
   }
 }
 
@@ -140,6 +137,9 @@ variable "raw_remote_proxy" {
     yandex = {
       url     = "https://mirror.yandex.ru/"
       storage = "raw-remote-yandex"
+    }
+    node-sharp-libvips = {
+      url = "https://github.com/lovell/sharp-libvips/releases/download"
     }
   }
 }
