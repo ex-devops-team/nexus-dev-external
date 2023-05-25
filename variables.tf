@@ -142,6 +142,10 @@ variable "raw_remote_proxy" {
       url = "https://github.com/lovell/sharp-libvips/releases/download"
       storage = "npm-remote"
     }
+    node-sharp = {
+      url = "https://github.com/lovell/sharp/releases/download"
+      storage = "npm-remote"
+    }
   }
 }
 
