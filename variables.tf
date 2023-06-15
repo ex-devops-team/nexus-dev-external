@@ -146,6 +146,10 @@ variable "raw_remote_proxy" {
       url = "https://github.com/lovell/sharp/releases/download"
       storage = "npm-remote"
     }
+    node-chromedriver = {
+      url = "https://chromedriver.storage.googleapis.com"
+      storage = "npm-remote"
+    }
   }
 }
 
