@@ -150,6 +150,10 @@ variable "raw_remote_proxy" {
       url = "https://chromedriver.storage.googleapis.com"
       storage = "npm-remote"
     }
+    node-phantomjs = {
+      url = "https://github.com/Medium/phantomjs/releases/download"
+      storage = "npm-remote"
+    }
   }
 }
 
