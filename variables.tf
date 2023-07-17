@@ -85,6 +85,9 @@ variable "helm_remote_proxy" {
     },
     grafana = {
       url = "https://grafana.github.io/helm-charts"
+    },
+    istio = {
+      url = "https://istio-release.storage.googleapis.com/charts"
     }
   }
 }
@@ -139,19 +142,19 @@ variable "raw_remote_proxy" {
       storage = "raw-remote-yandex"
     }
     node-sharp-libvips = {
-      url = "https://github.com/lovell/sharp-libvips/releases/download"
+      url     = "https://github.com/lovell/sharp-libvips/releases/download"
       storage = "npm-remote"
     }
     node-sharp = {
-      url = "https://github.com/lovell/sharp/releases/download"
+      url     = "https://github.com/lovell/sharp/releases/download"
       storage = "npm-remote"
     }
     node-chromedriver = {
-      url = "https://chromedriver.storage.googleapis.com"
+      url     = "https://chromedriver.storage.googleapis.com"
       storage = "npm-remote"
     }
     node-phantomjs = {
-      url = "https://github.com/Medium/phantomjs/releases/download"
+      url     = "https://github.com/Medium/phantomjs/releases/download"
       storage = "npm-remote"
     }
   }
