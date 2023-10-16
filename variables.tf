@@ -68,7 +68,7 @@ variable "mvn_remote_proxy" {
       url = "https://repo.spring.io/ui/native/libs-release"
     }
     geomajas = {
-      url = http://maven.geomajas.org
+      url = "http://maven.geomajas.org"
     }
   }
 }
