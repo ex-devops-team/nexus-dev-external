@@ -40,7 +40,11 @@ variable "docker_remote_proxy" {
     },
     deckhouse = {
       index = "REGISTRY"
-      url   = "https://registry.deckhouse.io/"
+      url   = "https://registry.deckhouse.io"
+    }
+    luntry = {
+      index = "REGISTRY"
+      url   = "https://registry.luntry.com"
     }
   }
 }
@@ -91,6 +95,9 @@ variable "helm_remote_proxy" {
     },
     istio = {
       url = "https://istio-release.storage.googleapis.com/charts"
+    }
+    luntry = {
+      url = "https://registry.luntry.com/chartrepo/luntry"
     }
   }
 }
