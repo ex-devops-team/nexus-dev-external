@@ -1,25 +1,36 @@
-# Данный репозиторий описывает конфигурацию внешних репозиториев для Nexus на DEV стенде
+# Nexus mirroring configuration for development team
 
-## Список репозиториев находится в файле ```variables.tf```
+Nexus objects:
+
+- Blob store
+- Repository
+- Group
+
+Naming pattern
+
+- tool-remote-short name, example docker-remote-dockerhub -> https://registry-1.docker.io
 
 - docker
+  ![docker](img/docker.png)
 - gradle
 - helm
 - mvn
+  ![mvn](img/mvn.png)
 - npm
+  ![npm](img/npm.png)
 - nuget
 - pip
 - raw
 - terraform
 
-### Для добавления новых репозиториев внести переменные в ```variables.tf```.
+## For new mirrors look at ```variables.tf```
 
-#### Перед использованием необходимо задать Nexus url, пользователя и пароль через переменные окружения:
+### Requirement Nexus url, username, password
+
+[Terraform provider](https://github.com/datadrivers/terraform-provider-nexus)
 
 ```bash
 export NEXUS_URL=https://nexus.example.com/
 export NEXUS_USERNAME="admin"
 export NEXUS_PASSWORD="password"
 ```
-
-[Используется провайдер](https://github.com/datadrivers/terraform-provider-nexus)
