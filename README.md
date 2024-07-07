@@ -17,7 +17,7 @@
 #### Перед использованием необходимо задать Nexus url, пользователя и пароль через переменные окружения:
 
 ```bash
-export NEXUS_URL=https://nexus.dev.lh.samoletgroup.ru/
+export NEXUS_URL=https://nexus.example.com/
 export NEXUS_USERNAME="admin"
 export NEXUS_PASSWORD="password"
 ```
