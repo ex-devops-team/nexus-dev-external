@@ -1,17 +1,8 @@
-variables:
-  TF_ROOT: ${CI_PROJECT_DIR}
-  TF_STATE_NAME: default
-  TF_CACHE_KEY: default
-  TF_CLI_CONFIG_FILE: $CI_PROJECT_DIR/.terraformrc
-
-.terraform_base:
-  image: nexus.dev.domoy.ru/docker-remote-gitlab/gitlab-org/terraform-images/stable:latest
-  cache:
-    paths:
-      - .terraform
-  before_script:
-    - cp .terraformrc ~/.terraformrc
-    - cd ${TF_ROOT}
+include:
+  - project: "devops-team/ci-templates"
+    ref: main
+    file:
+      - /terraform/.terraform.yml
 
 stages:
   - prepare
@@ -20,47 +11,20 @@ stages:
   - deploy
 
 init:
-  extends: .terraform_base
-  stage: prepare
-  script:
-    - gitlab-terraform init
-  tags:
-   - k8s-dev
+  extends: .init
 
 validate:
-  extends: .terraform_base
-  stage: validate
-  script:
-    - gitlab-terraform validate
-  tags:
-   - k8s-dev
+  extends: .validate
 
 plan:
-  extends: .terraform_base
-  stage: build
-  script:
-    - gitlab-terraform plan
-    - gitlab-terraform plan-json
-  artifacts:
-    name: plan
-    paths:
-      - ${TF_ROOT}/plan.cache
-    reports:
-      terraform: ${TF_ROOT}/plan.json
-  tags:
-   - k8s-dev
+  extends: .plan
 
 apply:
-  extends: .terraform_base
-  stage: deploy
-  environment:
-    name: production
-  script:
-    - gitlab-terraform apply
-  dependencies:
-    - plan
-  when: manual
-  only:
-    - master
-  tags:
-   - k8s-dev
+  extends: .apply
+
+workflow:
+  rules:
+    - when: always
+    - changes:
+        - "*.md"
+      when: never

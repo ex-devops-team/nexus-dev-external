@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: 3.2.150 # change to tag or sha
+    hooks:
+      - id: checkov
+        verbose: true
+        entry: checkov -d .
+  - repo: local
+    hooks:
+      - id: jira-ticket
+        name: check for jira ticket
+        language: pygrep
+        entry: '\A(?!JIRA-[0-9]+)'
+        args: [--negate]
+        stages: [commit-msg]
