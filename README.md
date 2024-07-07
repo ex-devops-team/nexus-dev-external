@@ -8,7 +8,8 @@ Nexus objects:
 
 Naming pattern
 
-- tool-remote-short name, example docker-remote-dockerhub -> https://registry-1.docker.io
+- tool-remote-short name for single repository, example docker-remote-dockerhub -> <https://registry-1.docker.io>
+- tool-remote for group, example docker-remote -> includes all docker-remote-* repos
 
 - docker
   ![docker](img/docker.png)
