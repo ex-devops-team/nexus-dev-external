@@ -32,4 +32,33 @@ resource "nexus_repository_nuget_proxy" "nuget_proxy" {
     blocked    = false
     auto_block = true
   }
+
+  depends_on = [
+    nexus_blobstore_file.nuget_remote_blobstore
+  ]
+}
+
+locals {
+  nuget_member_names = flatten([
+    for key, list_value in var.nuget_remote_proxy : "nuget-remote-${key}"
+  ])
+}
+
+resource "nexus_repository_nuget_group" "nuget_remote_group" {
+
+  name   = "nuget-remote"
+  online = true
+
+  group {
+    member_names = local.nuget_member_names
+  }
+
+  storage {
+    blob_store_name                = "nuget-remote"
+    strict_content_type_validation = true
+  }
+
+  depends_on = [
+    nexus_blobstore_file.nuget_remote_blobstore
+  ]
 }

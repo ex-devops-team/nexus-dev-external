@@ -42,9 +42,9 @@ variable "docker_remote_proxy" {
       index = "REGISTRY"
       url   = "https://registry.deckhouse.io"
     }
-    luntry = {
+    nvcr = {
       index = "REGISTRY"
-      url   = "https://registry.luntry.com"
+      url   = "https://nvcr.io"
     }
   }
 }
@@ -54,10 +54,10 @@ variable "mvn_remote_proxy" {
 
   default = {
     central = {
-      url = "https://repo1.maven.org/maven2/"
+      url = "https://repo1.maven.org/maven2"
     }
     onehippo = {
-      url = "https://maven.onehippo.com/maven2/"
+      url = "https://maven.onehippo.com/maven2"
     },
     jboss = {
       url = "https://repository.jboss.org/nexus/content/groups/public/org"
@@ -82,7 +82,7 @@ variable "helm_remote_proxy" {
 
   default = {
     awx = {
-      url = "https://ansible.github.io/awx-operator/"
+      url = "https://ansible.github.io/awx-operator"
     },
     dex = {
       url = "https://charts.dexidp.io"
@@ -96,9 +96,6 @@ variable "helm_remote_proxy" {
     istio = {
       url = "https://istio-release.storage.googleapis.com/charts"
     }
-    luntry = {
-      url = "https://registry.luntry.com/chartrepo/luntry"
-    }
   }
 }
 
@@ -107,7 +104,7 @@ variable "gradle_remote_proxy" {
 
   default = {
     plugins = {
-      url = "https://plugins.gradle.org/m2/"
+      url = "https://plugins.gradle.org/m2"
     }
   }
 }
@@ -130,7 +127,7 @@ variable "pip_remote_proxy" {
 
   default = {
     pypi = {
-      url = "https://pypi.org/"
+      url = "https://pypi.org"
     }
   }
 }
@@ -139,33 +136,13 @@ variable "raw_remote_proxy" {
   type = map(any)
 
   default = {
-    cypress = {
-      url     = "https://cdn.cypress.io",
-      storage = "npm-remote"
-    },
-    gradledistribution = {
-      url     = "https://services.gradle.org/distributions/",
-      storage = "gradle-remote"
-    },
     yandex = {
-      url     = "https://mirror.yandex.ru/"
+      url     = "https://mirror.yandex.ru"
       storage = "raw-remote-yandex"
-    }
-    node-sharp-libvips = {
-      url     = "https://github.com/lovell/sharp-libvips/releases/download"
-      storage = "npm-remote"
-    }
-    node-sharp = {
-      url     = "https://github.com/lovell/sharp/releases/download"
-      storage = "npm-remote"
-    }
-    node-chromedriver = {
-      url     = "https://chromedriver.storage.googleapis.com"
-      storage = "npm-remote"
-    }
-    node-phantomjs = {
-      url     = "https://github.com/Medium/phantomjs/releases/download"
-      storage = "npm-remote"
+    },
+    github = {
+      url     = "https://github.com"
+      storage = "raw-remote-github"
     }
   }
 }
@@ -175,7 +152,7 @@ variable "terraform_remote_proxy" {
 
   default = {
     yandex = {
-      url = "https://terraform-mirror.yandexcloud.net/"
+      url = "https://terraform-mirror.yandexcloud.net"
     }
   }
 }

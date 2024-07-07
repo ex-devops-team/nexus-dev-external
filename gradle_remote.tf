@@ -35,4 +35,8 @@ resource "nexus_repository_maven_proxy" "gradle_proxy" {
     blocked    = false
     auto_block = true
   }
+
+  depends_on = [
+    nexus_blobstore_file.gradle_remote_blobstore
+  ]
 }

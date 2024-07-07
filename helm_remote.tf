@@ -29,4 +29,8 @@ resource "nexus_repository_helm_proxy" "helm_proxy" {
     blocked    = false
     auto_block = true
   }
+
+  depends_on = [
+    nexus_blobstore_file.helm_remote_blobstore
+  ]
 }

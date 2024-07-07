@@ -1,4 +1,4 @@
-resource "nexus_blobstore_file" "nexus_remote_blobstore" {
+resource "nexus_blobstore_file" "mvn_remote_blobstore" {
   name = "mvn-remote"
   path = "mvn-remote"
 }
@@ -37,6 +37,31 @@ resource "nexus_repository_maven_proxy" "mvn_proxy" {
   }
 
   depends_on = [
-    nexus_blobstore_file.nexus_remote_blobstore
+    nexus_blobstore_file.mvn_remote_blobstore
+  ]
+}
+
+locals {
+  mvn_member_names = flatten([
+    for key, list_value in var.mvn_remote_proxy : "mvn-remote-${key}"
+  ])
+}
+
+resource "nexus_repository_maven_group" "mvn_proxy_group" {
+
+  name   = "mvn-remote"
+  online = true
+
+  group {
+    member_names = local.mvn_member_names
+  }
+
+  storage {
+    blob_store_name                = "mvn-remote"
+    strict_content_type_validation = true
+  }
+
+  depends_on = [
+    nexus_blobstore_file.mvn_remote_blobstore
   ]
 }

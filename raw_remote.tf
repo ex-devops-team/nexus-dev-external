@@ -1,6 +1,8 @@
-resource "nexus_blobstore_file" "yandex_remote_blobstore" {
-  name = "raw-remote-yandex"
-  path = "raw-remote-yandex"
+resource "nexus_blobstore_file" "remote_blobstore" {
+  for_each = var.raw_remote_proxy
+
+  name = each.value.storage
+  path = each.value.storage
 }
 
 resource "nexus_repository_raw_proxy" "raw_proxy" {
@@ -31,8 +33,6 @@ resource "nexus_repository_raw_proxy" "raw_proxy" {
   }
 
   depends_on = [
-    nexus_blobstore_file.node_remote_blobstore,
-    nexus_blobstore_file.gradle_remote_blobstore,
-    nexus_blobstore_file.yandex_remote_blobstore
+    nexus_blobstore_file.remote_blobstore
   ]
 }

@@ -5,10 +5,10 @@ terraform {
       version = "1.21.2"
     }
   }
+  required_version = ">= 1.7.7"
   backend "http" {}
 }
 
 provider "nexus" {
-  insecure = false
-  url      = "https://nexus.dev.domoy.ru"
+  insecure = true
 }
