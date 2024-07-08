@@ -121,11 +121,17 @@ export NEXUS_PASSWORD="password"
       ```text
       provider_installation {
         network_mirror {
-          url = "https://nexus.dev.example.com/repository/terraform-remote-yandex/"
+          url = "https://nexus.dev.example.com/repository/terraform-remote-yandex-providers/"
           include = ["registry.terraform.io/*/*"]
         }
         direct {
           exclude = ["registry.terraform.io/*/*"]
         }
       }
+      ```
+
+    - tfswitch
+
+      ```bash
+      tfswitch --mirror https://nexus.dev.example.com/repository/terraform-remote-yandex-binaries
       ```

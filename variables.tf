@@ -151,8 +151,11 @@ variable "terraform_remote_proxy" {
   type = map(any)
 
   default = {
-    yandex = {
+    yandex-providers = {
       url = "https://terraform-mirror.yandexcloud.net"
+    }
+    yandex-binaries = {
+      url = "https://hashicorp-releases.yandexcloud.net/terraform"
     }
   }
 }
