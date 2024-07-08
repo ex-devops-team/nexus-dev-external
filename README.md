@@ -17,6 +17,7 @@ Naming pattern
   ![docker](img/docker.png)
 - gradle
 - helm
+  ![helm](img/helm.png)
 - mvn
   ![mvn](img/mvn.png)
 - npm
@@ -25,6 +26,7 @@ Naming pattern
 - pip
 - raw
 - terraform
+  ![terraform](img/terraform.png)
 
 ## For new mirrors look at ```variables.tf```
 
