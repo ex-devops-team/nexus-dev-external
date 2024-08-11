@@ -6,7 +6,7 @@ terraform {
     }
   }
   required_version = "1.9.1"
-  backend "http" {}
+  # backend "http" {}
 }
 
 provider "nexus" {

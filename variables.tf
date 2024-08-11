@@ -1,6 +1,17 @@
+variable "s3" {
+  type = map(any)
+  default = {
+    url        = "https://minio.example.com"
+    region     = "us-central-1"
+    expiration = 90
+    path_style = true
+    access_key = ""
+    secret_key = ""
+    enabled    = true
+  }
+}
 variable "docker_remote_proxy" {
   type = map(any)
-
   default = {
     dockerhub = {
       index = "HUB"
@@ -137,12 +148,12 @@ variable "raw_remote_proxy" {
 
   default = {
     yandex = {
-      url     = "https://mirror.yandex.ru"
-      storage = "raw-remote-yandex"
+      url = "https://mirror.yandex.ru"
+      # storage = "raw-remote-yandex"
     },
     github = {
-      url     = "https://github.com"
-      storage = "raw-remote-github"
+      url = "https://github.com"
+      # storage = "raw-remote-github"
     }
   }
 }

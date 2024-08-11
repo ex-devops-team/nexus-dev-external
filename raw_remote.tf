@@ -1,8 +1,34 @@
-resource "nexus_blobstore_file" "remote_blobstore" {
-  for_each = var.raw_remote_proxy
+locals {
+  raw_blobstore_depenecies = lookup(var.s3, "enabled") ? nexus_blobstore_s3.raw_remote_blobstore_s3 : nexus_blobstore_file.raw_remote_blobstore
+}
 
-  name = each.value.storage
-  path = each.value.storage
+resource "nexus_blobstore_s3" "raw_remote_blobstore_s3" {
+  name = "raw-remote"
+  bucket_configuration {
+    bucket {
+      name       = "raw-remote"
+      region     = lookup(var.s3, "region")
+      expiration = lookup(var.s3, "expiration")
+    }
+    advanced_bucket_connection {
+      endpoint         = lookup(var.s3, "url")
+      force_path_style = lookup(var.s3, "path_style")
+    }
+    bucket_security {
+      access_key_id     = lookup(var.s3, "access_key")
+      secret_access_key = lookup(var.s3, "secret_key")
+    }
+  }
+  count = lookup(var.s3, "enabled") ? 1 : 0
+
+}
+
+resource "nexus_blobstore_file" "raw_remote_blobstore" {
+  # for_each = var.raw_remote_proxy
+
+  name  = "raw-remote"
+  path  = "raw-remote"
+  count = lookup(var.s3, "enabled") ? 0 : 1
 }
 
 resource "nexus_repository_raw_proxy" "raw_proxy" {
@@ -12,7 +38,7 @@ resource "nexus_repository_raw_proxy" "raw_proxy" {
   online = true
 
   storage {
-    blob_store_name                = each.value.storage
+    blob_store_name                = "raw-remote"
     strict_content_type_validation = true
   }
 
@@ -33,6 +59,6 @@ resource "nexus_repository_raw_proxy" "raw_proxy" {
   }
 
   depends_on = [
-    nexus_blobstore_file.remote_blobstore
+    local.raw_blobstore_depenecies
   ]
 }
